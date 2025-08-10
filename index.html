@@ -51,11 +51,6 @@
       transition:transform .18s ease, border-color .18s ease }
     .icon-btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.32) }
     .icon-btn img,.icon-btn svg{ width:20px; height:20px; display:block }
-    .btn{ --padx:14px; --pady:10px; display:inline-flex; align-items:center; gap:8px; padding:var(--pady) var(--padx);
-      border-radius:12px; border:1px solid var(--card-stroke); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      color:var(--text); text-decoration:none; font-weight:700; font-size:13px; box-shadow:var(--shadow); transition:transform .18s ease, border-color .18s ease }
-    .btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.32) }
-    .btn svg{ opacity:.92 }
 
     /* Sections & cards */
     section{ margin-top:clamp(16px,3vw,24px) }
@@ -76,15 +71,17 @@
 
     .card-wide{ grid-column:1 / -1 }
     .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+
     .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
       border:1px solid var(--card-stroke); background:rgba(255,255,255,.05); color:var(--text); text-decoration:none; font-weight:700; font-size:13px }
     .chip img{ width:16px; height:16px; display:block; border-radius:3px }
     .chip svg{ width:16px; height:16px }
 
+    .chip--primary{ background:linear-gradient(90deg, var(--accent), var(--accent2)); color:#0a0a0f; border:none }
+
     .bullet{ margin:0 0 10px 0; padding-left:18px }
     .bullet li{ margin:6px 0 }
 
-    /* Project headers with logo */
     .proj-head{ display:flex; align-items:center; gap:10px }
     .proj-logo{ width:22px; height:22px; display:block; opacity:.95 }
 
@@ -122,7 +119,7 @@
 
       <div class="cta-right">
         <a class="icon-btn" href="https://torrino.space/" target="_blank" rel="noopener" aria-label="Website">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.17a15.7 15.7 0 0 0-1.1-5.02A8.02 8.02 0 0 1 19.93 11ZM12 4.07c.97 1.32 1.77 3.21 2.14 5.93H9.86c.37-2.72 1.17-4.61 2.14-5.93ZM8.34 5a15.7 15.7 0 0 0-1.1 5.02H4.07A8.02 8.02 0 0 1 8.34 5ZM4.07 13h3.17c.1 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13ZM12 20c-.97-1.32-1.77-3.21-2.14-5.93h4.28c-.37 2.72-1.17 4.61-2.14 5.93Zm3.66-2c.86-1.38 1.4-3.16 1.6-5.02h3.17A8.02 8.02 0 0 1 15.66 18Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.17a15.7 15.7 0 0 0-1.1-5.02A8.02 8.02 0 0 1 19.93 11ZM12 4.07c.97 1.32 1.77 3.21 2.14 5.93H9.86c.37-2.72 1.17-4.61 2.14-5.93ZM8.34 5a15.7 15.7 0 0 0-1.1 5.02H4.07A8.02 8.02 0 0 1 8.34 5ZM4.07 13h3.17c.1 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13ZM12 20c-.97 0-2.44-2.2-2.9-6h5.8c-.46 3.8-2.02 6-2.9 6Zm3.66-2c.86-1.38 1.4-3.16 1.6-5.02h3.17A8.02 8.02 0 0 1 15.66 18Z"/></svg>
         </a>
         <a class="icon-btn" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener" aria-label="Discord">
           <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="">
@@ -130,9 +127,9 @@
         <a class="icon-btn" href="https://twitter.com/Torrino_DAO" target="_blank" rel="noopener" aria-label="X (Twitter)">
           <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="">
         </a>
-        <a class="btn" href="https://github.com/Happydao" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.79-.25.79-.56v-2c-3.19.7-3.86-1.37-3.86-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.39.96.11-.76.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.84 1.2 3.1 0 4.42-2.69 5.39-5.25 5.67.42.36.8 1.08.8 2.18v3.23c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
-          <span>GitHub</span>
+        <!-- GitHub: icon-only -->
+        <a class="icon-btn" href="https://github.com/Happydao" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2c-3.19.7-3.86-1.37-3.86-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.39.96.11-.76.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.84 1.2 3.1 0 4.42-2.69 5.39-5.25 5.67.42.36.8 1.08.8 2.18v1.79c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
         </a>
       </div>
     </header>
@@ -141,26 +138,31 @@
     <section>
       <h2 class="section-title">How to join Torrino DAO</h2>
       <article class="card card-wide">
-        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning any single NFT grants access to the Discord <strong>members-only chats</strong>. Your treasury share differs depending on which collection you hold.</p>
+        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning a single NFT grants access to <strong>members-only Discord chats</strong>, <strong>voting power</strong>, and <strong>early access</strong> to future projects. Your <strong>treasury share</strong> differs depending on which collection you hold.</p>
 
         <ul class="bullet">
-          <li><strong>Step 1 — Get an NFT:</strong> choose one of the two collections (both valid for membership).
+          <li>
+            <strong>Step 1 — Get an NFT:</strong> choose one of the two collections (both valid for membership).
             <div class="actions" style="margin-top:8px">
-              <!-- replace # with marketplace links -->
-              <a class="chip" href="#" target="_blank" rel="noopener">Buy Gen1 — Torrino DAO (500)</a>
-              <a class="chip" href="#" target="_blank" rel="noopener">Buy Gen2 — Solnauta (888)</a>
+              <a class="chip" href="https://magiceden.io/marketplace/torrino_dao_collection" target="_blank" rel="noopener">
+                <img src="306-cutout.png" alt="Gen1"> Buy Gen1 — Torrino DAO
+              </a>
+              <a class="chip" href="https://magiceden.io/marketplace/solnauta" target="_blank" rel="noopener">
+                <img src="369-cutout.png" alt="Gen2"> Buy Gen2 — SolNauta
+              </a>
             </div>
           </li>
-          <li><strong>Step 2 — Join Discord:</strong> head to <strong>#tutorial</strong> to get set up and become part of the community.
+          <li>
+            <strong>Step 2 — Join Discord:</strong> head to <strong>#tutorial</strong> to get set up and become part of the community.
             <div class="actions" style="margin-top:8px">
-              <a class="chip" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener">Join Discord</a>
+              <a class="chip chip--primary" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener">Join Discord</a>
             </div>
           </li>
         </ul>
 
         <p style="margin-top:8px">Want to see how per-NFT value evolves with the treasury? Open the membership dashboard.</p>
         <div class="actions">
-          <a class="chip" href="https://happydao.github.io/torrino-dao-dashboard" target="_blank" rel="noopener">Membership dashboard</a>
+          <a class="chip chip--primary" href="https://happydao.github.io/torrino-dao-dashboard" target="_blank" rel="noopener">Membership dashboard</a>
         </div>
       </article>
     </section>
@@ -172,17 +174,15 @@
         <!-- NUMMUS -->
         <article class="card">
           <div class="proj-head">
-            <img class="proj-logo" src="nummus-logo.png" alt="NUMMUS logo" onerror="this.style.display='none'">
+            <img class="proj-logo" src="nummus.png" alt="NUMMUS logo" onerror="this.style.display='none'">
             <h3>NUMMUS Aeternitas — $Nummus</h3>
           </div>
           <div class="actions" style="margin-top:10px">
             <a class="chip" href="https://happydao.github.io/Nummus.VaultDAO/" target="_blank" rel="noopener">
-              <!-- dashboard icon -->
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
               Dashboard — Swap NUMMUS → tBTC
             </a>
             <a class="chip" href="https://nummus.meme" target="_blank" rel="noopener">
-              <!-- globe -->
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.08a14.7 14.7 0 0 0-1.1-5.01A8.02 8.02 0 0 1 19.93 11ZM12 4c.88 0 2.44 2.2 2.9 6H9.1C9.56 6.2 11.12 4 12 4ZM6.25 5.99A14.7 14.7 0 0 0 5.15 11H2.07a8.02 8.02 0 0 1 4.18-5.01ZM4.07 13h3.08c.2 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13ZM12 20c-.88 0-2.44-2.2-2.9-6h5.8c-.46 3.8-2.02 6-2.9 6Zm3.25-1.99c.86-1.37 1.4-3.15 1.6-5.01h3.08a8.02 8.02 0 0 1-4.68 5.01Z"/></svg>
               Website
             </a>
@@ -191,7 +191,6 @@
               CoinGecko
             </a>
             <a class="chip" href="https://dexscreener.com/solana/auqtgm4tzdjsszngxrm1f69hxbyvmpnm95496puusbqg" target="_blank" rel="noopener">
-              <!-- inline 'chart' icon to avoid hotlink issues -->
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 19V5h2v12h4V9h2v8h4v-6h2v6h4v2H3z"/></svg>
               Dexscreener
             </a>
@@ -200,12 +199,10 @@
               Buy on Jupiter
             </a>
             <a class="chip" href="https://x.com/NummusMemeCoin" target="_blank" rel="noopener">
-              <!-- X -->
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22 22h-6.93l-4.56-5.96L4.3 22H1.54l6.98-7.97L2 2h7l4.11 5.5L18.244 2Zm-2.42 18h2.08L8.26 4H6.18l9.644 16Z"/></svg>
               X
             </a>
             <a class="chip" href="https://t.me/nummusmemecoin" target="_blank" rel="noopener">
-              <!-- Telegram -->
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.84 8.9 20a1 1 0 0 0 1.6.8l2.38-1.79 3.93 2.89c.72.53 1.75.13 1.96-.75l3.17-13.2a1.2 1.2 0 0 0-1.62-1.39L2.6 11.05c-.98.37-.9 1.8.12 2l4.98 1.01 10.8-6.74-9.46 8.52Z"/></svg>
               Telegram
             </a>
@@ -215,7 +212,7 @@
         <!-- BELLA BUMPER -->
         <article class="card">
           <div class="proj-head">
-            <img class="proj-logo" src="bella-bumper-logo.png" alt="BELLA BUMPER logo" onerror="this.style.display='none'">
+            <img class="proj-logo" src="bumper.png" alt="BELLA BUMPER logo" onerror="this.style.display='none'">
             <h3>BELLA BUMPER — $Bumper</h3>
           </div>
           <div class="actions" style="margin-top:10px">
