@@ -72,18 +72,38 @@
     .card-wide{ grid-column:1 / -1 }
     .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center }
 
+    /* Chips */
     .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
-      border:1px solid var(--card-stroke); background:rgba(255,255,255,.05); color:var(--text); text-decoration:none; font-weight:700; font-size:13px }
+      border:1px solid var(--card-stroke); background:rgba(255,255,255,.05); color:var(--text); text-decoration:none; font-weight:700; font-size:13px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease, filter .18s ease }
     .chip img{ width:16px; height:16px; display:block; border-radius:3px }
     .chip svg{ width:16px; height:16px }
 
+    /* Hover "illumination" for all chips */
+    .chip:hover, .chip:focus-visible{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.10);
+      box-shadow: 0 6px 18px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
+      filter: saturate(1.08);
+      text-decoration: none;
+    }
+
     .chip--primary{ background:linear-gradient(90deg, var(--accent), var(--accent2)); color:#0a0a0f; border:none }
+    .chip--primary:hover, .chip--primary:focus-visible{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(120,255,178,.28), 0 8px 22px rgba(255,95,210,.18);
+      filter: saturate(1.05);
+    }
 
     .bullet{ margin:0 0 10px 0; padding-left:18px }
     .bullet li{ margin:6px 0 }
 
     .proj-head{ display:flex; align-items:center; gap:10px }
     .proj-logo{ width:22px; height:22px; display:block; opacity:.95 }
+    .proj-logo--big{ width:44px; height:44px } /* Nummus = doppio */
+
+    .subhead{ margin:10px 0 6px 0; color:#fff; font-size:12px; letter-spacing:.8px; text-transform:uppercase; opacity:.85 }
 
     footer{ max-width:var(--maxw); margin:clamp(16px,4vw,28px) auto; padding:0 clamp(18px,3vw,28px) 38px; color:var(--muted); font-size:12px; text-align:center }
 
@@ -119,7 +139,7 @@
 
       <div class="cta-right">
         <a class="icon-btn" href="https://torrino.space/" target="_blank" rel="noopener" aria-label="Website">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.17a15.7 15.7 0 0 0-1.1-5.02A8.02 8.02 0 0 1 19.93 11ZM12 4.07c.97 1.32 1.77 3.21 2.14 5.93H9.86c.37-2.72 1.17-4.61 2.14-5.93ZM8.34 5a15.7 15.7 0 0 0-1.1 5.02H4.07A8.02 8.02 0 0 1 8.34 5ZM4.07 13h3.17c.1 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13ZM12 20c-.97 0-2.44-2.2-2.9-6h5.8c-.46 3.8-2.02 6-2.9 6Zm3.66-2c.86-1.38 1.4-3.16 1.6-5.02h3.17A8.02 8.02 0 0 1 15.66 18Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.17a15.7 15.7 0 0 0-1.1-5.02A8.02 8.02 0 0 1 19.93 11ZM12 4.07c.97 1.32 1.77 3.21 2.14 5.93H9.86c.37-2.72 1.17-4.61 2.14-5.93ZM8.34 5a15.7 15.7 0 0 0-1.1 5.02H4.07A8.02 8.02 0 0 1 8.34 5ZM4.07 13h3.17c.1 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13Zm7.93 6.93c-.97-1.32-1.77-3.21-2.14-5.93h4.28c-.37 2.72-1.17 4.61-2.14 5.93ZM15.66 18a15.7 15.7 0 0 0 1.1-5.02h3.17A8.02 8.02 0 0 1 15.66 18Z"/></svg>
         </a>
         <a class="icon-btn" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener" aria-label="Discord">
           <img src="https://cdn-icons-png.flaticon.com/512/3670/3670157.png" alt="">
@@ -174,16 +194,13 @@
         <!-- NUMMUS -->
         <article class="card">
           <div class="proj-head">
-            <img class="proj-logo" src="nummus.png" alt="NUMMUS logo" onerror="this.style.display='none'">
+            <img class="proj-logo proj-logo--big" src="nummus.png" alt="NUMMUS logo" onerror="this.style.display='none'">
             <h3>NUMMUS Aeternitas — $Nummus</h3>
           </div>
+
           <div class="actions" style="margin-top:10px">
-            <a class="chip" href="https://happydao.github.io/Nummus.VaultDAO/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
-              Dashboard — Swap NUMMUS → tBTC
-            </a>
-            <a class="chip" href="https://nummus.meme" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.08a14.7 14.7 0 0 0-1.1-5.01A8.02 8.02 0 0 1 19.93 11ZM12 4c.88 0 2.44 2.2 2.9 6H9.1C9.56 6.2 11.12 4 12 4ZM6.25 5.99A14.7 14.7 0 0 0 5.15 11H2.07a8.02 8.02 0 0 1 4.18-5.01ZM4.07 13h3.08c.2 1.86.74 3.64 1.6 5.01A8.02 8.02 0 0 1 4.07 13ZM12 20c-.88 0-2.44-2.2-2.9-6h5.8c-.46 3.8-2.02 6-2.9 6Zm3.25-1.99c.86-1.37 1.4-3.15 1.6-5.01h3.08a8.02 8.02 0 0 1-4.68 5.01Z"/></svg>
+            <a class="chip" href="https://nummus.meme" target="_blank" rel="noopener" aria-label="Nummus website">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm7.93 9h-3.08a14.7 14.7 0 0 0-1.1-5.01A8.02 8.02 0 0 1 19.93 11Z"/></svg>
               Website
             </a>
             <a class="chip" href="https://www.coingecko.com/it/monete/nummus-aeternitas" target="_blank" rel="noopener">
@@ -207,6 +224,14 @@
               Telegram
             </a>
           </div>
+
+          <div class="subhead">Advanced</div>
+          <div class="actions">
+            <a class="chip" href="https://happydao.github.io/Nummus.VaultDAO/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
+              Dashboard — Swap NUMMUS → tBTC
+            </a>
+          </div>
         </article>
 
         <!-- BELLA BUMPER -->
@@ -215,11 +240,8 @@
             <img class="proj-logo" src="bumper.png" alt="BELLA BUMPER logo" onerror="this.style.display='none'">
             <h3>BELLA BUMPER — $Bumper</h3>
           </div>
+
           <div class="actions" style="margin-top:10px">
-            <a class="chip" href="https://happydao.github.io/Bumper.burn/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
-              Dashboard — Burn
-            </a>
             <a class="chip" href="https://bellabumper.xyz/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Z"/></svg>
               Website
@@ -243,6 +265,18 @@
             <a class="chip" href="https://t.me/Bellabumpermemecoin" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.84 8.9 20a1 1 0 0 0 1.6.8l2.38-1.79 3.93 2.89c.72.53 1.75.13 1.96-.75l3.17-13.2a1.2 1.2 0 0 0-1.62-1.39L2.6 11.05c-.98.37-.9 1.8.12 2l4.98 1.01 10.8-6.74-9.46 8.52Z"/></svg>
               Telegram
+            </a>
+          </div>
+
+          <div class="subhead">Advanced</div>
+          <div class="actions">
+            <a class="chip" href="https://happydao.github.io/Bumper.burn/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
+              Dashboard — Burn
+            </a>
+            <a class="chip" href="https://app.streamflow.finance/staking/solana/mainnet/DxiM7F9ChdJpSGf2fWHMRkZTwE4A6d8Z6n1pQopahLLx" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3l4 7h-8l4-7Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-6h2v4h-2v-4Z"/></svg>
+              Stake $Bumper → earn $Nummus
             </a>
           </div>
         </article>
