@@ -4,117 +4,99 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Torrino DAO Hub</title>
-  <meta name="description" content="Central hub for Torrino DAO: how to join, membership dashboard, and project links (NUMMUS & BUMPER)." />
+  <meta name="description" content="Torrino DAO Hub: how to join, membership dashboard, and project links (NUMMUS & BELLA BUMPER)." />
   <meta name="theme-color" content="#0b0b12" />
   <link rel="preload" as="image" href="torrino-dao.png" />
+
   <style>
     :root{
       --bg:#0b0b12; --card:rgba(255,255,255,0.06); --card-stroke:rgba(255,255,255,0.18);
       --text:#f4f6f8; --muted:#b9c0c8; --accent:#78ffb2; --accent2:#ff5fd2; --link:#9ee8ff;
       --shadow:0 8px 30px rgba(0,0,0,0.35); --radius:16px; --grid-gap:clamp(16px,2.8vw,26px); --maxw:1200px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden}
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:var(--bg); overflow-x:hidden }
 
-    /* Background */
-    .bg{position:fixed;inset:0;pointer-events:none;z-index:-2;background:
+    .bg{ position:fixed; inset:0; pointer-events:none; z-index:-2; background:
       radial-gradient(1200px 800px at 75% 5%, rgba(120,255,178,.22), transparent 60%),
       radial-gradient(900px 600px  at 18% 18%, rgba(255,95,210,.20), transparent 70%),
       radial-gradient(800px 900px  at 25% 95%, rgba(125,160,255,.18), transparent 65%),
       radial-gradient(900px 900px  at 95% 70%, rgba(255,205,120,.12), transparent 68%),
-      linear-gradient(180deg, rgba(6,8,18,.15), rgba(6,8,18,.55))}
-    .scanlines{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.06;
+      linear-gradient(180deg, rgba(6,8,18,.15), rgba(6,8,18,.55)) }
+    .scanlines{ position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.06;
       background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,.08) 0, rgba(255,255,255,.08) 1px, transparent 1px, transparent 3px);
-      mix-blend-mode:overlay}
+      mix-blend-mode:overlay }
     @media (prefers-reduced-motion:no-preference){
-      .bg{animation:floatGlow 18s ease-in-out infinite alternate}
-      @keyframes floatGlow{
-        0%{filter:saturate(1.06) hue-rotate(0deg);transform:translate3d(0,0,0) scale(1)}
-        100%{filter:saturate(1.18) hue-rotate(6deg);transform:translate3d(0,-6px,0) scale(1.01)}
-      }
+      .bg{ animation:floatGlow 18s ease-in-out infinite alternate }
+      @keyframes floatGlow{ 0%{ filter:saturate(1.06) hue-rotate(0deg); transform:translate3d(0,0,0) scale(1)}
+                             100%{ filter:saturate(1.18) hue-rotate(6deg); transform:translate3d(0,-6px,0) scale(1.01)} }
     }
 
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(18px,3vw,28px)}
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:clamp(18px,3vw,28px) }
 
     /* Header */
-    header{
-      display:grid; grid-template-columns:auto 1fr auto; align-items:center; column-gap:16px;
-      margin-top:4px; margin-bottom:clamp(22px,4vw,36px)
-    }
-    .brand{display:flex;align-items:flex-start;gap:16px;min-width:260px}
-    .logo-img{width:clamp(60px,6vw,96px);height:auto;object-fit:contain;display:block}
-    .title{
-      margin:0; line-height:1.03; font-weight:900; letter-spacing:.4px; white-space:nowrap;
-      font-size:clamp(26px,4vw,48px);
-      background:linear-gradient(90deg,#fff,#d9fff0 45%,#ffd9f3 85%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-shadow:0 6px 24px rgba(0,0,0,.35)
-    }
-    .tagline{margin:6px 0 0 0; color:var(--muted); font-size:clamp(12px,1.4vw,14px); letter-spacing:.2px}
+    header{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; column-gap:16px; margin-top:4px; margin-bottom:clamp(22px,4vw,36px) }
+    .brand{ display:flex; align-items:flex-start; gap:16px; min-width:260px }
+    .logo-img{ width:clamp(60px,6vw,96px); height:auto; object-fit:contain; display:block }
+    .title{ margin:0; line-height:1.03; font-weight:900; letter-spacing:.4px; white-space:nowrap; font-size:clamp(26px,4vw,48px);
+      background:linear-gradient(90deg,#fff,#d9fff0 45%,#ffd9f3 85%); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 6px 24px rgba(0,0,0,.35) }
+    .tagline{ margin:6px 0 0 0; color:var(--muted); font-size:clamp(12px,1.4vw,14px); letter-spacing:.2px }
 
-    .nft-strip{justify-self:center; display:flex; align-items:center; justify-content:center; gap:clamp(10px,2vw,16px); padding:4px 8px; min-width:220px}
-    .nft-strip img{height:clamp(44px,6vh,66px); width:auto; display:block; filter:drop-shadow(0 2px 10px rgba(0,0,0,.45)); user-select:none; pointer-events:none}
+    .nft-strip{ justify-self:center; display:flex; align-items:center; justify-content:center; gap:clamp(10px,2vw,16px); padding:4px 8px; min-width:220px }
+    .nft-strip img{ height:clamp(44px,6vh,66px); width:auto; filter:drop-shadow(0 2px 10px rgba(0,0,0,.45)); user-select:none; pointer-events:none }
 
-    .cta-right{display:flex;gap:10px;align-items:center}
-    .icon-btn{
-      width:38px;height:38px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+    .cta-right{ display:flex; gap:10px; align-items:center }
+    .icon-btn{ width:38px; height:38px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;
       background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); border:1px solid var(--card-stroke); box-shadow:var(--shadow);
-      transition:transform .18s ease,border-color .18s ease
-    }
-    .icon-btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.32)}
-    .icon-btn img,.icon-btn svg{width:20px;height:20px;display:block}
-    .btn{
-      --padx:14px; --pady:10px; display:inline-flex; align-items:center; gap:8px;
-      padding:var(--pady) var(--padx); border-radius:12px; border:1px solid var(--card-stroke);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      color:var(--text); text-decoration:none; font-weight:700; font-size:13px; box-shadow:var(--shadow);
-      transition:transform .18s ease,border-color .18s ease
-    }
-    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.32)}
-    .btn svg{opacity:.92}
+      transition:transform .18s ease, border-color .18s ease }
+    .icon-btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.32) }
+    .icon-btn img,.icon-btn svg{ width:20px; height:20px; display:block }
+    .btn{ --padx:14px; --pady:10px; display:inline-flex; align-items:center; gap:8px; padding:var(--pady) var(--padx);
+      border-radius:12px; border:1px solid var(--card-stroke); background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      color:var(--text); text-decoration:none; font-weight:700; font-size:13px; box-shadow:var(--shadow); transition:transform .18s ease, border-color .18s ease }
+    .btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.32) }
+    .btn svg{ opacity:.92 }
 
     /* Sections & cards */
-    section{margin-top:clamp(16px,3vw,24px)}
-    .section-title{margin:0 0 10px 0; font-weight:900; letter-spacing:.2px; font-size:clamp(18px,2.2vw,22px); color:#fff}
+    section{ margin-top:clamp(16px,3vw,24px) }
+    .section-title{ margin:0 0 10px 0; font-weight:900; letter-spacing:.2px; font-size:clamp(18px,2.2vw,22px); color:#fff }
 
-    .card{
-      position:relative; overflow:hidden; border-radius:var(--radius);
-      background:var(--card); border:1px solid var(--card-stroke);
-      padding:clamp(18px,2.4vw,22px); box-shadow:var(--shadow);
-      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; isolation:isolate
-    }
-    .card::before{
-      content:""; position:absolute; inset:-2px;
-      background:conic-gradient(from 180deg at 50% 50%, rgba(120,255,178,.40), rgba(255,95,210,.40), rgba(125,160,255,.40), rgba(120,255,178,.40));
-      filter:blur(22px); opacity:.14; z-index:-1; transition:opacity .2s ease
-    }
+    .card{ position:relative; overflow:hidden; border-radius:var(--radius); background:var(--card); border:1px solid var(--card-stroke);
+      padding:clamp(18px,2.4vw,22px); box-shadow:var(--shadow); transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; isolation:isolate }
+    .card::before{ content:""; position:absolute; inset:-2px; background:conic-gradient(from 180deg at 50% 50%,
+      rgba(120,255,178,.40), rgba(255,95,210,.40), rgba(125,160,255,.40), rgba(120,255,178,.40)); filter:blur(22px); opacity:.14; z-index:-1; transition:opacity .2s ease }
     .card:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,.28) }
     .card:hover::before{ opacity:.24 }
-    .card h3{margin:0 0 6px 0; font-size:clamp(18px,2.2vw,22px)}
-    .card p{margin:0 0 14px 0; color:var(--muted); font-size:14px; line-height:1.45}
+    .card h3{ margin:0 0 6px 0; font-size:clamp(18px,2.2vw,22px) }
+    .card p{ margin:0 0 14px 0; color:var(--muted); font-size:14px; line-height:1.45 }
 
-    .grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--grid-gap)}
+    .grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--grid-gap) }
     @media (max-width:980px){ .grid{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    .card-wide{grid-column:1 / -1}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--card-stroke);background:rgba(255,255,255,.05);color:var(--text);text-decoration:none;font-weight:700;font-size:13px}
-    .chip--primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0a0a0f;border:none}
-    .chip svg{width:16px;height:16px}
+    .card-wide{ grid-column:1 / -1 }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+    .chip{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+      border:1px solid var(--card-stroke); background:rgba(255,255,255,.05); color:var(--text); text-decoration:none; font-weight:700; font-size:13px }
+    .chip--primary{ background:linear-gradient(90deg, var(--accent), var(--accent2)); color:#0a0a0f; border:none }
+    .chip img{ width:16px; height:16px; display:block; border-radius:3px }
+    .chip svg{ width:16px; height:16px }
 
-    .bullet{margin:0 0 10px 0;padding-left:18px}
-    .bullet li{margin:6px 0}
+    .bullet{ margin:0 0 10px 0; padding-left:18px }
+    .bullet li{ margin:6px 0 }
 
-    footer{max-width:var(--maxw);margin:clamp(16px,4vw,28px) auto;padding:0 clamp(18px,3vw,28px) 38px;color:var(--muted);font-size:12px;text-align:center}
+    /* Project headers with logo */
+    .proj-head{ display:flex; align-items:center; gap:10px }
+    .proj-logo{ width:22px; height:22px; display:block; opacity:.95 }
 
-    /* Responsive header stacking */
+    footer{ max-width:var(--maxw); margin:clamp(16px,4vw,28px) auto; padding:0 clamp(18px,3vw,28px) 38px; color:var(--muted); font-size:12px; text-align:center }
+
     @media (max-width:860px){
-      header{grid-template-columns:1fr;row-gap:10px}
-      .brand{justify-content:flex-start}
-      .nft-strip{order:2}
-      .cta-right{justify-content:flex-start;order:3}
+      header{ grid-template-columns:1fr; row-gap:10px }
+      .brand{ justify-content:flex-start }
+      .nft-strip{ order:2 }
+      .cta-right{ justify-content:flex-start; order:3 }
     }
   </style>
 </head>
@@ -123,7 +105,7 @@
   <div class="scanlines"></div>
 
   <div class="wrap">
-    <!-- ===== HEADER ===== -->
+    <!-- HEADER -->
     <header>
       <div class="brand">
         <img class="logo-img" src="torrino-dao.png" alt="Torrino DAO logo" width="96" height="96" loading="eager" decoding="async">
@@ -157,81 +139,106 @@
       </div>
     </header>
 
-    <!-- ===== HOW TO JOIN ===== -->
+    <!-- HOW TO JOIN -->
     <section>
       <h2 class="section-title">How to join Torrino DAO</h2>
       <article class="card card-wide">
-        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning any single NFT grants access to the Discord’s members-only areas. The share of the treasury you represent depends on which collection you hold.</p>
+        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning any single NFT grants access to the Discord <strong>members-only chats</strong>. Your treasury share differs depending on which collection you hold.</p>
 
         <ul class="bullet">
           <li><strong>Step 1 — Get an NFT:</strong> choose one of the two collections (both valid for membership).
             <div class="actions" style="margin-top:8px">
-              <!-- TODO: replace # with marketplace links -->
+              <!-- replace # with marketplace links -->
               <a class="chip" href="#" target="_blank" rel="noopener">Buy Gen1 — Torrino DAO (500)</a>
               <a class="chip" href="#" target="_blank" rel="noopener">Buy Gen2 — Solnauta (888)</a>
             </div>
           </li>
-          <li><strong>Step 2 — Join Discord:</strong> connect your wallet and unlock roles.
+          <li><strong>Step 2 — Join Discord:</strong> head to <strong>#tutorial</strong> to get set up and become part of the community.
             <div class="actions" style="margin-top:8px">
-              <a class="chip chip--primary" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener">
-                Join Discord
-              </a>
+              <a class="chip chip--primary" href="https://discord.gg/yYkwEjcKa9" target="_blank" rel="noopener">Join Discord</a>
             </div>
           </li>
         </ul>
 
-        <p style="margin-top:8px">Want to see how the <em>per-NFT value</em> changes with the treasury? Open the membership dashboard.</p>
+        <p style="margin-top:8px">Want to see how per-NFT value evolves with the treasury? Open the membership dashboard.</p>
         <div class="actions">
           <a class="chip chip--primary" href="https://happydao.github.io/torrino-dao-dashboard" target="_blank" rel="noopener">
             Membership dashboard
           </a>
-          <a class="chip" href="https://github.com/Happydao/torrino-dao-dashboard" target="_blank" rel="noopener">Dashboard repo</a>
         </div>
       </article>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
+    <!-- PROJECTS -->
     <section>
       <h2 class="section-title">Projects</h2>
       <div class="grid" aria-label="Projects">
         <!-- NUMMUS -->
         <article class="card">
-          <h3>NUMMUS — Aeternitas Vault DAO</h3>
-          <p>Live tracker for swapping <strong>NUMMUS</strong> into <strong>tBTC</strong>: inflows, progress, and on-chain proofs for the Vault.</p>
-          <div class="actions">
+          <div class="proj-head">
+            <img class="proj-logo" src="nummus-logo.png" alt="NUMMUS logo" onerror="this.style.display='none'">
+            <h3>NUMMUS</h3>
+          </div>
+          <div class="actions" style="margin-top:10px">
             <a class="chip chip--primary" href="https://happydao.github.io/Nummus.VaultDAO/" target="_blank" rel="noopener">
-              Open dashboard
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+              Dashboard — Swap NUMMUS → tBTC
             </a>
-            <a class="chip" href="https://nummus.meme" target="_blank" rel="noopener">Website</a>
-            <!-- TODO: replace placeholders below when you share links -->
-            <a class="chip" href="#" target="_blank" rel="noopener">CoinGecko</a>
-            <a class="chip" href="#" target="_blank" rel="noopener">DexScreener</a>
-            <a class="chip" href="https://github.com/Happydao/Nummus.VaultDAO" target="_blank" rel="noopener">Repo</a>
+            <a class="chip" href="https://nummus.meme" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Z"/></svg>
+              Website
+            </a>
+            <!-- Fill these when you share exact URLs -->
+            <a class="chip" href="#" target="_blank" rel="noopener">
+              <img src="https://www.coingecko.com/favicon.ico" alt="">
+              CoinGecko
+            </a>
+            <a class="chip" href="#" target="_blank" rel="noopener">
+              <img src="https://dexscreener.com/favicon-32x32.png" alt="">
+              Dexscreener
+            </a>
+            <a class="chip" href="https://jup.ag/tokens/9JK2U7aEkp3tWaFNuaJowWRgNys5DVaKGxWk73VT5ray" target="_blank" rel="noopener">
+              <img src="https://jup.ag/favicon.ico" alt="">
+              Buy on Jupiter
+            </a>
           </div>
         </article>
 
-        <!-- BUMPER -->
+        <!-- BELLA BUMPER -->
         <article class="card">
-          <h3>BUMPER — Burn</h3>
-          <p>Track and visualize <strong>BUMPER</strong> token burns on Solana — totals, USD value, and recent transactions.</p>
-          <div class="actions">
+          <div class="proj-head">
+            <img class="proj-logo" src="bella-bumper-logo.png" alt="BELLA BUMPER logo" onerror="this.style.display='none'">
+            <h3>BELLA BUMPER</h3>
+          </div>
+          <div class="actions" style="margin-top:10px">
             <a class="chip chip--primary" href="https://happydao.github.io/Bumper.burn/" target="_blank" rel="noopener">
-              Burn dashboard
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+              Dashboard — Burn
             </a>
-            <!-- TODO: replace placeholders below when you share links -->
-            <a class="chip" href="#" target="_blank" rel="noopener">CoinGecko</a>
-            <a class="chip" href="#" target="_blank" rel="noopener">DexScreener</a>
-            <a class="chip" href="https://github.com/Happydao/Bumper.burn" target="_blank" rel="noopener">Repo</a>
+            <!-- Fill these when you share exact URLs -->
+            <a class="chip" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Z"/></svg>
+              Website
+            </a>
+            <a class="chip" href="#" target="_blank" rel="noopener">
+              <img src="https://www.coingecko.com/favicon.ico" alt="">
+              CoinGecko
+            </a>
+            <a class="chip" href="#" target="_blank" rel="noopener">
+              <img src="https://dexscreener.com/favicon-32x32.png" alt="">
+              Dexscreener
+            </a>
+            <a class="chip" href="https://jup.ag/tokens/5bp5PwTyu4i1hGyQsRwRYqiR2CmxyHt2cPJGEbXEbonk" target="_blank" rel="noopener">
+              <img src="https://jup.ag/favicon.ico" alt="">
+              Buy on Jupiter
+            </a>
           </div>
         </article>
 
-        <!-- (slot libero per futuri progetti) -->
+        <!-- SLOT FUTURO -->
         <article class="card">
           <h3>More coming soon</h3>
           <p>New modules and dashboards will appear here as the DAO expands.</p>
-          <div class="actions">
-            <a class="chip" href="https://torrino.space/" target="_blank" rel="noopener">Visit website</a>
-          </div>
         </article>
       </div>
     </section>
@@ -241,7 +248,6 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-
     const mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
     if (mq.matches){
       document.querySelectorAll('.card').forEach(card=>{
@@ -252,10 +258,7 @@
           const y = (e.clientY - r.top) / r.height - .5;
           card.style.transform = `translateY(-4px) rotateX(${(-y*2)}deg) rotateY(${(x*3)}deg)`;
         };
-        const off = ()=>{
-          clearTimeout(t);
-          t = setTimeout(()=> card.style.transform = '', 80);
-        };
+        const off = ()=>{ clearTimeout(t); t=setTimeout(()=> card.style.transform='', 80); };
         card.addEventListener('mousemove', on);
         card.addEventListener('mouseleave', off);
         card.addEventListener('blur', off);
