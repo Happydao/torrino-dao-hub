@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Torrino DAO Hub</title>
-  <meta name="description" content="Torrino DAO Hub: how to join, membership dashboard, education for members, and project links (NUMMUS & BELLA BUMPER)." />
+  <meta name="description" content="Torrino DAO Hub: how to join, membership dashboard, and project links (NUMMUS & BELLA BUMPER)." />
   <meta name="theme-color" content="#0b0b12" />
   <link rel="preload" as="image" href="torrino-dao.png" />
   <style>
     :root{
       --bg:#0b0b12; --card:rgba(255,255,255,.06); --card-stroke:rgba(255,255,255,.18);
       --text:#f4f6f8; --muted:#b9c0c8; --accent:#78ffb2; --accent2:#ff5fd2; --link:#9ee8ff;
-      --shadow:0 8px 30px rgba(0,0,0,0.35); --radius:16px; --grid-gap:clamp(16px,2.8vw,26px); --maxw:1200px;
+      --shadow:0 8px 30px rgba(0,0,0,.35); --radius:16px; --grid-gap:clamp(16px,2.8vw,26px); --maxw:1200px;
     }
     *{ box-sizing:border-box }
     html,body{ height:100% }
@@ -79,7 +79,6 @@
     .chip img{ width:16px; height:16px; display:block; border-radius:3px }
     .chip svg{ width:16px; height:16px }
 
-    /* Hover "illumination" for all chips */
     .chip:hover, .chip:focus-visible{
       transform: translateY(-2px);
       border-color: rgba(255,255,255,.35);
@@ -101,7 +100,7 @@
 
     .proj-head{ display:flex; align-items:center; gap:10px }
     .proj-logo{ width:22px; height:22px; display:block; opacity:.95 }
-    .proj-logo--big{ width:44px; height:44px }
+    .proj-logo--big{ width:44px; height:44px } /* NUMMUS doppio */
 
     .subhead{ margin:10px 0 6px 0; color:#fff; font-size:12px; letter-spacing:.8px; text-transform:uppercase; opacity:.85 }
 
@@ -113,6 +112,28 @@
       .nft-strip{ order:2 }
       .cta-right{ justify-content:flex-start; order:3 }
     }
+
+    /* Modal Roadmap */
+    .modal{
+      position: fixed; inset:0; z-index: 50; display:none;
+      align-items:center; justify-content:center;
+      background: rgba(0,0,0,.75);
+      padding: 24px;
+    }
+    .modal.open{ display:flex }
+    .modal__inner{
+      position: relative; max-width: min(1100px, 92vw); max-height: 90vh;
+      border-radius: 12px; overflow: hidden; background: #0e0f16; border:1px solid rgba(255,255,255,.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+    .modal__img{ display:block; max-width:100%; height:auto; max-height:90vh }
+    .modal__close{
+      position:absolute; top:8px; right:8px; border:0; border-radius:10px; cursor:pointer;
+      width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,.10); color:#fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+    .modal__close:hover{ background: rgba(255,255,255,.18) }
   </style>
 </head>
 <body>
@@ -158,7 +179,7 @@
     <section>
       <h2 class="section-title">How to join Torrino DAO</h2>
       <article class="card card-wide">
-        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning a single NFT grants access to <strong>members-only Discord chats</strong>, <strong>voting power</strong>, <strong>early access</strong> to future projects, and <strong>free crypto-education guides</strong> reserved for members. Your <strong>treasury share</strong> differs depending on which collection you hold.</p>
+        <p><strong>It’s simple:</strong> hold <em>at least one</em> NFT from either collection. Owning a single NFT grants access to <strong>members-only Discord chats</strong>, <strong>voting power</strong>, <strong>early access</strong> to future projects, and <strong>free crypto education guides</strong>. Your <strong>treasury share</strong> differs depending on which collection you hold.</p>
 
         <ul class="bullet">
           <li>
@@ -224,8 +245,7 @@
               Telegram
             </a>
             <a class="chip" href="https://www.tiktok.com/@nummus_aeternitas?_t=ZN-8ymuwx43obG&_r=1" target="_blank" rel="noopener">
-              <!-- TikTok (music note) -->
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3v8.4a3.6 3.6 0 1 1-2-3.2V6h6V3h-4Zm6 3.2A6.8 6.8 0 0 1 22 8v3.2a10 10 0 0 1-6-2.2V6.2Z"/></svg>
+              <img src="https://www.tiktok.com/favicon.ico" alt="">
               TikTok
             </a>
           </div>
@@ -275,6 +295,11 @@
 
           <div class="subhead">Advanced</div>
           <div class="actions">
+            <!-- Roadmap in modal -->
+            <a class="chip" href="#" id="openRoadmap" aria-controls="roadmapModal" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h12l4 3v9H4V6Zm2 2v8h12V10.5L14 8H6Z"/></svg>
+              Roadmap 2025
+            </a>
             <a class="chip" href="https://happydao.github.io/Bumper.burn/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
               Dashboard — Burn
@@ -286,19 +311,32 @@
           </div>
         </article>
 
-        <!-- COMING SOON (nuovi progetti) -->
+        <!-- SLOT FUTURO -->
         <article class="card">
           <h3>Coming soon</h3>
-          <p>New <strong>projects</strong> will be announced here as the DAO grows. Stay tuned for fresh modules, collaborations, and utilities.</p>
+          <p>New DAO projects will be posted here as the community expands.</p>
         </article>
       </div>
     </section>
   </div>
 
+  <!-- FOOTER -->
   <footer>© <span id="y"></span> Torrino DAO — Hub</footer>
+
+  <!-- MODAL: Roadmap Bella Bumper -->
+  <div class="modal" id="roadmapModal" aria-hidden="true" role="dialog" aria-label="Bella Bumper Roadmap 2025">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" id="closeRoadmap" aria-label="Close roadmap">
+        ✕
+      </button>
+      <img class="modal__img" src="roadmapbumper2025.png" alt="Bella Bumper Roadmap 2025">
+    </div>
+  </div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Card tilt on hover
     const mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
     if (mq.matches){
       document.querySelectorAll('.card').forEach(card=>{
@@ -315,6 +353,34 @@
         card.addEventListener('blur', off);
       });
     }
+
+    // Modal logic (open/close, ESC, click-outside)
+    const openBtn = document.getElementById('openRoadmap');
+    const modal   = document.getElementById('roadmapModal');
+    const closeBtn= document.getElementById('closeRoadmap');
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      openBtn.setAttribute('aria-expanded','true');
+      // prevent scroll derrière (optional)
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      openBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click',(e)=>{ e.preventDefault(); openModal(); });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click',(e)=>{
+      if(e.target === modal) closeModal();
+    });
+    window.addEventListener('keydown',(e)=>{
+      if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
   </script>
 </body>
 </html>
