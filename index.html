@@ -103,12 +103,20 @@
 
     .proj-head{ display:flex; align-items:center; gap:10px }
     .proj-logo{ width:22px; height:22px; display:block; opacity:.95 }
-    .proj-logo--big{ width:44px; height:44px } /* NUMMUS doppio */
+    .proj-logo--big{ width:44px; height:44px } /* NUMMUS double size */
 
     .subhead{ margin:10px 0 6px 0; color:#fff; font-size:12px; letter-spacing:.8px; text-transform:uppercase; opacity:.85 }
 
-    /* Coming Soon image */
+    /* Coming Soon / promo image */
     .coming-img{ width:100%; height:auto; display:block; border-radius:12px; margin-top:10px; box-shadow: 0 10px 30px rgba(0,0,0,.35) }
+
+    /* Monospace / long strings wrap (for CA) */
+    .mono{
+      display:inline-block; padding:2px 6px; border-radius:6px;
+      background:rgba(255,255,255,.06); border:1px solid var(--card-stroke);
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      line-height:1.2; overflow-wrap:anywhere; word-break:break-word;
+    }
 
     footer{ max-width:var(--maxw); margin:clamp(16px,4vw,28px) auto; padding:0 clamp(18px,3vw,28px) 38px; color:var(--muted); font-size:12px; text-align:center }
 
@@ -275,7 +283,7 @@
 
           <div class="subhead">Advanced</div>
           <div class="actions">
-            <!-- NEW: Burn dashboard for NUMMUS -->
+            <!-- Burn dashboard for NUMMUS -->
             <a class="chip" href="https://happydao.github.io/Nummus.burn/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
               Dashboard — Burn
@@ -342,18 +350,18 @@
         <!-- VENUS PUMP LIVE -->
         <article class="card">
           <h3>VENUS PUMP — Punchy Puff ($PUNCHY)</h3>
-          <p>La meme del <strong>Venus Pump</strong> è partita <strong>domenica 23 novembre 2025</strong>.</p>
+          <p>The <strong>Venus Pump</strong> meme launch started on <strong>Sunday, Nov 23, 2025</strong>.</p>
           <ul class="bullet">
             <li><strong>Coin Name:</strong> Punchy Puff</li>
             <li><strong>Ticker:</strong> PUNCHY</li>
-            <li><strong>Total Supply:</strong> 500.000.000</li>
-            <li><strong>CA:</strong> <code>GnYufMbTAMz1DzkSN2DmwkBzjMTLkM22WvQuN1VCbonk</code></li>
+            <li><strong>Total Supply:</strong> 500,000,000</li>
+            <li><strong>Contract Address (CA):</strong> <span class="mono">GnYufMbTAMz1DzkSN2DmwkBzjMTLkM22WvQuN1VCbonk</span></li>
           </ul>
           <div class="actions" style="margin-top:6px">
             <a class="chip chip--primary" href="https://jup.ag/tokens/GnYufMbTAMz1DzkSN2DmwkBzjMTLkM22WvQuN1VCbonk" target="_blank" rel="noopener">Buy PUNCHY on Jupiter</a>
           </div>
-          <p style="margin-top:8px"><em>I canali ufficiali sono in arrivo.</em></p>
-          <img class="coming-img" src="venuspump.jpg" alt="Punchy Puff — Venus Pump teaser">
+          <p style="margin-top:8px"><em>Official channels are coming soon.</em></p>
+          <img class="coming-img" src="punchy.jpg" alt="Punchy Puff — Venus Pump">
         </article>
       </div>
     </section>
