@@ -70,6 +70,20 @@
       66%{ background-position:60px 700px }
       100%{ background-position:0 1100px }
     }
+    @keyframes snowFallMobile{
+      0%{ background-position:0 -100px }
+      33%{ background-position:-30px 150px }
+      66%{ background-position:30px 350px }
+      100%{ background-position:0 550px }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .snow{ opacity:.25 }
+      .snow::before,
+      .snow::after{
+        animation:none;
+        filter:none;
+      }
+    }
     @media (prefers-reduced-motion:no-preference){
       .bg{ animation:floatGlow 18s ease-in-out infinite alternate }
       @keyframes floatGlow{ 0%{ filter:saturate(1.06) hue-rotate(0deg); transform:translate3d(0,0,0) scale(1)}
@@ -290,11 +304,22 @@
       .cta-right{ align-items:flex-start; justify-self:start; width:auto; margin-top:8px; flex-direction:row; flex-wrap:wrap; gap:8px }
       .cta-icons,.cta-airdrop{ justify-content:flex-start; gap:6px }
       .cta-icons{ flex-wrap:wrap }
-      .icon-btn{ width:30px; height:30px; border-radius:8px }
-      .icon-btn--text{ width:auto; min-width:62px; height:30px; padding:0 6px; font-size:10px; line-height:1 }
+      .icon-btn{ width:44px; height:44px; border-radius:12px }
+      .icon-btn--text{ width:auto; min-width:72px; height:44px; padding:0 10px; font-size:12px; line-height:1 }
       .chip{ padding:5px 8px; font-size:10px }
       .popover-panel{ position:fixed; left:50%; right:auto; top:auto; bottom:16px; transform:translate(-50%, 8px); }
       .popover-wrap.is-open .popover-panel{ transform:translate(-50%, 0); }
+      .snow{ opacity:.45 }
+      .snow::before{
+        animation-name:snowFallMobile;
+        animation-duration:15s;
+        background-size:560px 560px;
+      }
+      .snow::after{
+        opacity:0;
+        animation:none;
+        filter:none;
+      }
     }
   </style>
 </head>
