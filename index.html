@@ -218,6 +218,8 @@
     }
 
     footer{ max-width:var(--maxw); margin:clamp(16px,4vw,28px) auto; padding:0 clamp(18px,3vw,28px) 38px; color:var(--muted); font-size:12px; text-align:center }
+    footer a{ color:#7ecbff; text-decoration:underline; text-underline-offset:2px }
+    footer a:hover, footer a:focus-visible{ color:#b6e4ff }
 
     @media (max-width:860px){
       header{ grid-template-columns:1fr; row-gap:10px }
@@ -346,13 +348,9 @@
         <div class="cta-right">
           <!-- Icon row -->
           <div class="cta-icons">
-            <a class="icon-btn icon-btn--text" href="https://torrino.space/" target="_blank" rel="noopener">Website</a>
+            <a class="icon-btn icon-btn--text" href="https://torrino.space/" target="_blank" rel="noopener">← Back to torrino.space</a>
             <a class="icon-btn" href="https://twitter.com/Torrino_DAO" target="_blank" rel="noopener" aria-label="X (Twitter)">
               <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="">
-            </a>
-            <!-- GitHub: icon-only -->
-            <a class="icon-btn" href="https://github.com/Happydao" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.11.79-.25.79-.56v-2c-3.19.7-3.86-1.37-3.86-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.73 1.26 3.39.96.11-.76.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.19a11.1 11.1 0 0 1 5.82 0c2.22-1.5 3.2-1.19 3.2-1.19.63 1.58.23 2.75.11 3.04.75.81 1.2 1.84 1.2 3.1 0 4.42-2.69 5.39-5.25 5.67.42.36.8 1.08.8 2.18v1.79c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
             </a>
           </div>
 
@@ -596,7 +594,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>© <span id="y"></span> Torrino DAO — Hub</footer>
+  <footer>© 2025 Torrino DAO — Crafted with passion by HAPPY — <a href="https://happydev.fi" target="_blank" rel="noopener">happydev.fi</a></footer>
 
   <!-- MODAL: Roadmap Bella Bumper -->
   <div class="modal" id="roadmapModal" aria-hidden="true" role="dialog" aria-label="Bella Bumper Roadmap 2025">
@@ -609,8 +607,6 @@
   </div>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
     // Card tilt on hover
     const mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
     if (mq.matches){
