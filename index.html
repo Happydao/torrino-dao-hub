@@ -107,13 +107,13 @@
       .title{ padding-right:36px }
     }
     .brand::after{
-      content:""; position:absolute; inset:-4px; border-radius:18px; border:1px solid rgba(20,241,149,.5);
-      box-shadow:0 0 28px rgba(20,241,149,.35), 0 0 38px rgba(153,69,255,.25);
-      opacity:.6; animation:brandPulse 2.6s ease-in-out infinite; pointer-events:none;
+      content:""; position:absolute; inset:-4px; border-radius:18px; border:2px solid rgba(20,241,149,.7);
+      box-shadow:0 0 40px rgba(20,241,149,.55), 0 0 60px rgba(153,69,255,.45);
+      opacity:.75; animation:brandPulse 5s ease-in-out infinite; pointer-events:none;
     }
     @keyframes brandPulse{
-      0%,100%{ opacity:.5; filter:drop-shadow(0 0 6px rgba(120,255,178,.15)) }
-      50%{ opacity:.95; filter:drop-shadow(0 0 16px rgba(120,255,178,.45)) }
+      0%,100%{ opacity:.55; filter:drop-shadow(0 0 8px rgba(120,255,178,.2)); transform:scale(1) }
+      50%{ opacity:1; filter:drop-shadow(0 0 24px rgba(120,255,178,.65)); transform:scale(1.01) }
     }
     .logo-img{ width:clamp(60px,6vw,96px); height:auto; object-fit:contain; display:block }
     .title{ margin:0; line-height:1.03; font-weight:700; letter-spacing:.6px; white-space:nowrap; font-size:clamp(26px,3.8vw,46px);
@@ -342,9 +342,6 @@
       </div>
 
       <div class="header-actions">
-        <div class="solana-badge" aria-label="Solana">
-          <img class="solana-logo" src="ISClogo.png" alt="Solana logo" loading="eager" decoding="async">
-        </div>
         <div class="cta-right">
           <!-- Icon row -->
           <div class="cta-icons">
@@ -594,7 +591,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer>© 2025 Torrino DAO — Crafted with passion by HAPPY — <a href="https://happydev.fi" target="_blank" rel="noopener">happydev.fi</a></footer>
+  <footer>© 2026 Torrino DAO — Crafted with passion by HAPPY — <a href="https://happydev.fi" target="_blank" rel="noopener">happydev.fi</a></footer>
 
   <!-- MODAL: Roadmap Bella Bumper -->
   <div class="modal" id="roadmapModal" aria-hidden="true" role="dialog" aria-label="Bella Bumper Roadmap 2025">
