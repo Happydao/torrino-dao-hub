@@ -6,7 +6,13 @@
   <title>Torrino DAO Hub</title>
   <meta name="description" content="Torrino DAO Hub: how to join, membership dashboard, and project links (NUMMUS & BELLA BUMPER)." />
   <meta name="theme-color" content="#0b0b12" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Torrino DAO Hub" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="preload" as="image" href="torrino-dao.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="torrino-dao.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -107,13 +113,13 @@
       .title{ padding-right:36px }
     }
     .brand::after{
-      content:""; position:absolute; inset:-4px; border-radius:18px; border:2px solid rgba(20,241,149,.7);
-      box-shadow:0 0 40px rgba(20,241,149,.55), 0 0 60px rgba(153,69,255,.45);
+      content:""; position:absolute; inset:-4px; border-radius:18px; border:2px solid rgba(95,214,255,.65);
+      box-shadow:0 0 40px rgba(95,214,255,.55), 0 0 64px rgba(106,184,255,.45);
       opacity:.75; animation:brandPulse 5s ease-in-out infinite; pointer-events:none;
     }
     @keyframes brandPulse{
-      0%,100%{ opacity:.55; filter:drop-shadow(0 0 8px rgba(120,255,178,.2)); transform:scale(1) }
-      50%{ opacity:1; filter:drop-shadow(0 0 24px rgba(120,255,178,.65)); transform:scale(1.01) }
+      0%,100%{ opacity:.55; filter:drop-shadow(0 0 10px rgba(95,214,255,.25)); transform:scale(1) }
+      50%{ opacity:1; filter:drop-shadow(0 0 28px rgba(95,214,255,.7)); transform:scale(1.01) }
     }
     .logo-img{ width:clamp(60px,6vw,96px); height:auto; object-fit:contain; display:block }
     .title{ margin:0; line-height:1.03; font-weight:700; letter-spacing:.6px; white-space:nowrap; font-size:clamp(26px,3.8vw,46px);
@@ -244,6 +250,10 @@
       border-radius: 12px; overflow: hidden; background: #0e0f16; border:1px solid rgba(255,255,255,.15);
       box-shadow: 0 20px 60px rgba(0,0,0,.55);
     }
+    .modal__content{ padding:20px 18px 22px }
+    .modal__title{ margin:0 0 6px 0; font-family:var(--font-display); font-size:20px }
+    .modal__lead{ margin:0 0 12px 0; color:var(--muted); font-size:13px }
+    .install-steps{ margin:0; padding-left:18px; color:#e6edf5; font-size:13px; line-height:1.5 }
     .modal__img{ display:block; max-width:100%; height:auto; max-height:90vh }
     .modal__close{
       position:absolute; top:8px; right:8px; border:0; border-radius:10px; cursor:pointer;
@@ -346,6 +356,9 @@
           <!-- Icon row -->
           <div class="cta-icons">
             <a class="icon-btn icon-btn--text" href="https://torrino.space/" target="_blank" rel="noopener">← Back to torrino.space</a>
+            <button class="icon-btn icon-btn--text" type="button" id="installBtn" aria-controls="installModal" aria-expanded="false">
+              Install Hub
+            </button>
             <a class="icon-btn" href="https://twitter.com/Torrino_DAO" target="_blank" rel="noopener" aria-label="X (Twitter)">
               <img src="https://cdn-icons-png.flaticon.com/512/5968/5968958.png" alt="">
             </a>
@@ -593,6 +606,23 @@
   <!-- FOOTER -->
   <footer>© 2026 Torrino DAO — Crafted with passion by HAPPY — <a href="https://happydev.fi" target="_blank" rel="noopener">happydev.fi</a></footer>
 
+  <!-- MODAL: Install PWA / Bookmarks -->
+  <div class="modal" id="installModal" aria-hidden="true" role="dialog" aria-label="Install Torrino DAO Hub">
+    <div class="modal__inner">
+      <button class="modal__close" type="button" id="closeInstall" aria-label="Close install">
+        ✕
+      </button>
+      <div class="modal__content">
+        <h3 class="modal__title">Install Torrino DAO Hub</h3>
+        <p class="modal__lead">Add the hub to your device for quick access.</p>
+        <ol class="install-steps" id="installSteps"></ol>
+        <div class="actions" style="margin-top:12px">
+          <button class="chip chip--primary" type="button" id="installNow" hidden>Install now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL: Roadmap Bella Bumper -->
   <div class="modal" id="roadmapModal" aria-hidden="true" role="dialog" aria-label="Bella Bumper Roadmap 2025">
     <div class="modal__inner">
@@ -691,6 +721,105 @@
     window.addEventListener('keydown',(e)=>{
       if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
+
+    // PWA install / bookmarks
+    const installBtn = document.getElementById('installBtn');
+    const installModal = document.getElementById('installModal');
+    const closeInstall = document.getElementById('closeInstall');
+    const installSteps = document.getElementById('installSteps');
+    const installNow = document.getElementById('installNow');
+    let deferredPrompt = null;
+
+    const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isDesktop = () =>
+      window.matchMedia('(pointer: fine)').matches && !/android|iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = () =>
+      window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    const openInstallModal = (steps, canInstall)=>{
+      installSteps.innerHTML = steps.map(step=>`<li>${step}</li>`).join('');
+      installNow.hidden = !canInstall;
+      installModal.classList.add('open');
+      installModal.setAttribute('aria-hidden','false');
+      installBtn.setAttribute('aria-expanded','true');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeInstallModal = ()=>{
+      installModal.classList.remove('open');
+      installModal.setAttribute('aria-hidden','true');
+      installBtn.setAttribute('aria-expanded','false');
+      document.body.style.overflow = '';
+    };
+
+    window.addEventListener('beforeinstallprompt', (e)=>{
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!isDesktop()){
+        installBtn.textContent = 'Install app';
+      }
+    });
+
+    if (isStandalone()){
+      installBtn.style.display = 'none';
+    }
+
+    installBtn.addEventListener('click', async ()=>{
+      if (isDesktop()){
+        openInstallModal([
+          'Press Ctrl + D (Windows/Linux) or Cmd + D (Mac).',
+          'Confirm to add the page to your bookmarks.'
+        ], false);
+        return;
+      }
+
+      if (deferredPrompt){
+        openInstallModal([
+          'Tap "Install now" to add the app shortcut.'
+        ], true);
+        return;
+      }
+
+      if (isIOS()){
+        openInstallModal([
+          'Tap the Share button (square with an arrow).',
+          'Choose "Add to Home Screen".',
+          'Confirm: the icon will appear on your Home Screen.'
+        ], false);
+        return;
+      }
+
+      openInstallModal([
+        'Open the browser menu (⋮).',
+        'Select "Add to Home screen" or "Install app".',
+        'Confirm to create the shortcut.'
+      ], false);
+    });
+
+    installNow.addEventListener('click', async ()=>{
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      closeInstallModal();
+      if (choice && choice.outcome === 'accepted'){
+        installBtn.style.display = 'none';
+      }
+    });
+
+    closeInstall.addEventListener('click', closeInstallModal);
+    installModal.addEventListener('click',(e)=>{
+      if (e.target === installModal) closeInstallModal();
+    });
+    window.addEventListener('keydown',(e)=>{
+      if (e.key === 'Escape' && installModal.classList.contains('open')) closeInstallModal();
+    });
+
+    // Service worker registration
+    if ('serviceWorker' in navigator){
+      window.addEventListener('load', ()=>{
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
   </script>
   <script data-goatcounter="https://torrinohub.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
