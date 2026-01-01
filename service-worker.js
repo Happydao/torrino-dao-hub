@@ -3,6 +3,7 @@ const PRECACHE_URLS = [
   './',
   'index.html',
   'manifest.webmanifest',
+  'favicon.png',
   'torrino-dao.png',
   'ISClogo.png',
   'nummus.png',

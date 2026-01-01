@@ -8,8 +8,8 @@
   "theme_color": "#0b0b12",
   "icons": [
     {
-      "src": "torrino-dao.png",
-      "sizes": "512x512",
+      "src": "favicon.png",
+      "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"
     }
