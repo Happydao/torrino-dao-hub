@@ -89,6 +89,53 @@
     .cta-icons img{ filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
     .cta-icons svg{ color:#fff }
     .cta-airdrop{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end }
+    .cta-airdrop .chip{ min-height:52px }
+    .chip--voting{
+      position:relative;
+      overflow:hidden;
+      padding:0 18px;
+      font-weight:800;
+      letter-spacing:.45px;
+      color:#041018;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.38), rgba(255,255,255,.06) 30%, transparent 31%),
+        linear-gradient(135deg, #d8fff4, #7fffd4 24%, #14f195 56%, #42d7ff 100%);
+      border-color:rgba(165,255,228,.95);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.14),
+        0 12px 28px rgba(20,241,149,.24),
+        0 0 28px rgba(20,241,149,.35),
+        0 0 56px rgba(66,215,255,.18),
+        inset 0 1px 0 rgba(255,255,255,.7);
+      text-shadow:0 1px 0 rgba(255,255,255,.28);
+    }
+    .chip--voting::before{
+      content:"";
+      position:absolute;
+      inset:-20% auto -20% -30%;
+      width:50%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+      transform:skewX(-24deg);
+      opacity:.75;
+      transition:transform .3s ease, opacity .3s ease;
+    }
+    .chip--voting:hover{
+      transform:translateY(-2px);
+      border-color:rgba(214,255,244,1);
+      box-shadow:
+        0 18px 38px rgba(20,241,149,.3),
+        0 0 32px rgba(20,241,149,.46),
+        0 0 68px rgba(66,215,255,.22),
+        inset 0 1px 0 rgba(255,255,255,.78);
+    }
+    .chip--voting:hover::before{
+      transform:translateX(185%) skewX(-24deg);
+      opacity:1;
+    }
+    .chip--voting:focus-visible{
+      outline:3px solid rgba(165,255,228,.55);
+      outline-offset:2px;
+    }
     .icon-btn{ width:38px; height:38px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; text-decoration:none;
       background:linear-gradient(135deg, rgba(20,241,149,.22), rgba(153,69,255,.18)); border:1px solid rgba(255,255,255,.28); box-shadow:var(--shadow);
       transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease }
@@ -301,10 +348,9 @@
             </a>
           </div>
 
-          <!-- Airdrop chips under icons -->
+          <!-- Voting CTA under icons -->
           <div class="cta-airdrop">
-            <a class="chip" href="https://airdrop.gotmlabz.io/airdrop/nummus/eligibility" target="_blank" rel="noopener">Airdrop Check</a>
-            <a class="chip" href="https://airdrop.gotmlabz.io/airdrop/nummus" target="_blank" rel="noopener">Airdrop Claim</a>
+            <a class="chip chip--voting" href="https://happydev.fi/torrino.dao.voting/" target="_blank" rel="noopener">Voting Platform</a>
           </div>
         </div>
       </div>
@@ -442,11 +488,11 @@
         <article class="card">
           <div class="proj-head">
             <img class="proj-logo proj-logo--bumper" src="bumper.png" alt="BELLA BUMPER logo" onerror="this.style.display='none'">
-            <h3>BELLA BUMPER — $Bumper</h3>
+            <h3>BELLA BUMPER PLAY 2 EARN - $PISTA</h3>
           </div>
 
           <div class="actions" style="margin-top:10px">
-            <a class="chip" href="https://bellabumper.xyz/" target="_blank" rel="noopener">
+            <a class="chip" href="https://www.bellabumper.fun/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Z"/></svg>
               Website
             </a>
@@ -461,22 +507,22 @@
                   <span>Links &amp; Markets</span>
                 </div>
                 <div class="popover-list">
-                  <a class="popover-item" role="menuitem" href="https://x.com/bellabumpermeme" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22 22h-6.93l-4.56-5.96L4.3 22H1.54l6.98-7.97L2 2h7l4.11 5.5L18.244 2Zm-2.42 18h2.08L8.26 4H6.18l9.644 16Z"/></svg>
-                    X
-                  </a>
-                  <a class="popover-item" role="menuitem" href="https://t.me/Bellabumpermemecoin" target="_blank" rel="noopener">
+                  <a class="popover-item" role="menuitem" href="https://t.me/playbellabumper" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.04 15.84 8.9 20a1 1 0 0 0 1.6.8l2.38-1.79 3.93 2.89c.72.53 1.75.13 1.96-.75l3.17-13.2a1.2 1.2 0 0 0-1.62-1.39L2.6 11.05c-.98.37-.9 1.8.12 2l4.98 1.01 10.8-6.74-9.46 8.52Z"/></svg>
                     Telegram
                   </a>
-                  <a class="popover-item" role="menuitem" href="https://www.coingecko.com/it/monete/bella-bumper" target="_blank" rel="noopener">
-                    <img src="https://www.coingecko.com/favicon.ico" alt=""> CoinGecko
+                  <a class="popover-item" role="menuitem" href="https://x.com/playbellabumper" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22 22h-6.93l-4.56-5.96L4.3 22H1.54l6.98-7.97L2 2h7l4.11 5.5L18.244 2Zm-2.42 18h2.08L8.26 4H6.18l9.644 16Z"/></svg>
+                    X
                   </a>
-                  <a class="popover-item" role="menuitem" href="https://dexscreener.com/solana/8m5xzn4aqmafry5xd56eryrfhs3evvvxqfnhgbdifbwz" target="_blank" rel="noopener">
+                  <a class="popover-item" role="menuitem" href="https://dexscreener.com/solana/5ml6tkr2m3gtcteol9ppkrqpv7pj8bsrvwfu9ztnft9k" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 19V5h2v12h4V9h2v8h4v-6h2v6h4v2H3z"/></svg>
                     Dexscreener
                   </a>
-                  <a class="popover-item" role="menuitem" href="https://jup.ag/tokens/5bp5PwTyu4i1hGyQsRwRYqiR2CmxyHt2cPJGEbXEbonk" target="_blank" rel="noopener">
+                  <a class="popover-item" role="menuitem" href="https://www.geckoterminal.com/solana/pools/A7RyRM8gfpwuySA7ecgghHmA39wi4yufZvrVrHcuEzcZ?utm_source=coingecko&utm_medium=referral&utm_campaign=searchresults" target="_blank" rel="noopener">
+                    <img src="https://www.coingecko.com/favicon.ico" alt=""> CoinGecko
+                  </a>
+                  <a class="popover-item" role="menuitem" href="https://jup.ag/tokens/9CaQUthsVMugZzMvskrrvcHXyjFqHGdNtGkPT8QSRACE" target="_blank" rel="noopener">
                     <img src="https://jup.ag/favicon.ico" alt=""> Buy on Jupiter
                   </a>
                 </div>
@@ -486,18 +532,9 @@
 
           <div class="subhead">Advanced</div>
           <div class="actions">
-            <!-- Roadmap in modal -->
-            <a class="chip" href="#" id="openRoadmap" aria-controls="roadmapModal" aria-expanded="false">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h12l4 3v9H4V6Zm2 2v8h12V10.5L14 8H6Z"/></svg>
-              Roadmap 2025
-            </a>
-            <a class="chip" href="https://happydao.github.io/Bumper.burn/" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 3h18v4H3V3Zm0 6h10v12H3V9Zm12 0h6v12h-6V9Z"/></svg>
-              Dashboard — Burn
-            </a>
-            <a class="chip" href="https://app.streamflow.finance/staking/solana/mainnet/DxiM7F9ChdJpSGf2fWHMRkZTwE4A6d8Z6n1pQopahLLx" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3l4 7h-8l4-7Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm-1-6h2v4h-2v-4Z"/></svg>
-              Stake $Bumper → earn $Nummus
+            <a class="chip" href="https://happydev.fi/airdrop.jolly.bumper/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 4 7v5c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5Zm1 14h-2v-2h2v2Zm0-4h-2V8h2v4Z"/></svg>
+              Airdrop checker
             </a>
           </div>
         </article>
@@ -574,16 +611,6 @@
     </div>
   </div>
 
-  <!-- MODAL: Roadmap Bella Bumper -->
-  <div class="modal" id="roadmapModal" aria-hidden="true" role="dialog" aria-label="Bella Bumper Roadmap 2025">
-    <div class="modal__inner">
-      <button class="modal__close" type="button" id="closeRoadmap" aria-label="Close roadmap">
-        ✕
-      </button>
-      <img class="modal__img" src="roadmapbumper2025.png" alt="Bella Bumper Roadmap 2025">
-    </div>
-  </div>
-
   <script>
     // Card tilt on hover
     const mq = window.matchMedia('(prefers-reduced-motion: no-preference)');
@@ -644,33 +671,6 @@
 
     document.addEventListener('click', (e)=>{
       if (!e.target.closest('[data-popover]')) closePopovers();
-    });
-
-    // Modal logic (open/close, ESC, click-outside)
-    const openBtn = document.getElementById('openRoadmap');
-    const modal   = document.getElementById('roadmapModal');
-    const closeBtn= document.getElementById('closeRoadmap');
-
-    function openModal(){
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden','false');
-      openBtn.setAttribute('aria-expanded','true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden','true');
-      openBtn.setAttribute('aria-expanded','false');
-      document.body.style.overflow = '';
-    }
-
-    openBtn.addEventListener('click',(e)=>{ e.preventDefault(); openModal(); });
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click',(e)=>{
-      if(e.target === modal) closeModal();
-    });
-    window.addEventListener('keydown',(e)=>{
-      if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
 
     // PWA install / bookmarks
