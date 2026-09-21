@@ -1,4 +1,4 @@
-const CACHE_NAME = 'torrino-hub-v1';
+const CACHE_NAME = 'torrino-hub-v2';
 const PRECACHE_URLS = [
   './',
   'index.html',
@@ -8,7 +8,7 @@ const PRECACHE_URLS = [
   'ISClogo.png',
   'nummus.png',
   'bumper.png',
-  'punchy.jpg',
+  'quango.png',
   'venuspump.jpg',
   '369-cutout.png',
   '306-cutout.png',
